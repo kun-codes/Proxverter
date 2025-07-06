@@ -19,7 +19,8 @@ class LinuxProxy:
 
     def __is_gnome(self):
         desktop = os.environ.get("XDG_CURRENT_DESKTOP", "").lower()
-        return "gnome" in desktop or "cinnamon" in desktop
+        gnome_like = ["gnome", "cinnamon", "budgie", "mate", "unity"]
+        return any(env in desktop for env in gnome_like)
     def __is_kde(self):
         return "kde" in os.environ.get("XDG_CURRENT_DESKTOP", "").lower()
 
